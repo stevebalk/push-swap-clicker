@@ -1,0 +1,271 @@
+[gd_scene load_steps=6 format=3 uid="uid://sdhtll6hq8ux"]
+
+[ext_resource type="Theme" uid="uid://cp0f13d5wijip" path="res://buttons.tres" id="1_eotj8"]
+[ext_resource type="Script" path="res://main.gd" id="1_q51xe"]
+[ext_resource type="Texture2D" uid="uid://7mgh7v7s57ke" path="res://icons/undo.png" id="3_7hvub"]
+[ext_resource type="Texture2D" uid="uid://bgoc1112u3qw6" path="res://icons/redo.png" id="4_h4c64"]
+[ext_resource type="Texture2D" uid="uid://3uxux8b3exnv" path="res://icons/exit.png" id="4_ye1jr"]
+
+[node name="main" type="Control"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_q51xe")
+
+[node name="backgroundA" type="ColorRect" parent="."]
+show_behind_parent = true
+custom_minimum_size = Vector2(818, 830)
+layout_mode = 2
+offset_left = 50.0
+offset_top = 200.0
+offset_right = 870.0
+offset_bottom = 1030.0
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="backgroundA"]
+layout_mode = 2
+offset_left = 249.0
+offset_top = -92.0
+offset_right = 499.0
+offset_bottom = -7.0
+theme_override_font_sizes/normal_font_size = 60
+text = "Stack A"
+
+[node name="backgroundB" type="ColorRect" parent="."]
+show_behind_parent = true
+layout_mode = 2
+offset_left = 1050.0
+offset_top = 200.0
+offset_right = 1870.0
+offset_bottom = 1030.0
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="backgroundB"]
+layout_mode = 2
+offset_left = 258.0
+offset_top = -91.0
+offset_right = 490.0
+offset_bottom = -8.0
+theme_override_font_sizes/normal_font_size = 60
+text = "Stack B"
+
+[node name="do_buttons" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 753.0
+offset_top = 146.0
+offset_right = 1153.0
+offset_bottom = 190.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="undo" type="Button" parent="do_buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_eotj8")
+text = "undo
+"
+icon = ExtResource("3_7hvub")
+expand_icon = true
+
+[node name="redo" type="Button" parent="do_buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_eotj8")
+text = "redo
+"
+icon = ExtResource("4_h4c64")
+icon_alignment = 2
+expand_icon = true
+
+[node name="push_swap_buttons" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(150, 250)
+layout_mode = 0
+offset_left = 886.0
+offset_top = 195.0
+offset_right = 1036.0
+offset_bottom = 663.0
+
+[node name="HSeparator4" type="HSeparator" parent="push_swap_buttons"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="push" type="HBoxContainer" parent="push_swap_buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="pa" type="Button" parent="push_swap_buttons/push"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_eotj8")
+text = "pa"
+
+[node name="pb" type="Button" parent="push_swap_buttons/push"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_eotj8")
+text = "pb"
+
+[node name="HSeparator" type="HSeparator" parent="push_swap_buttons"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="rotate" type="HBoxContainer" parent="push_swap_buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ra" type="Button" parent="push_swap_buttons/rotate"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_eotj8")
+text = "ra"
+
+[node name="rb" type="Button" parent="push_swap_buttons/rotate"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_eotj8")
+text = "rb
+"
+
+[node name="rr" type="Button" parent="push_swap_buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_eotj8")
+text = "rr
+"
+
+[node name="HSeparator2" type="HSeparator" parent="push_swap_buttons"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="swap" type="HBoxContainer" parent="push_swap_buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="sa" type="Button" parent="push_swap_buttons/swap"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_eotj8")
+text = "sa"
+
+[node name="sb" type="Button" parent="push_swap_buttons/swap"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_eotj8")
+text = "sb"
+
+[node name="ss" type="Button" parent="push_swap_buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_eotj8")
+text = "ss
+"
+
+[node name="HSeparator3" type="HSeparator" parent="push_swap_buttons"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="reverseRotate" type="HBoxContainer" parent="push_swap_buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="rra" type="Button" parent="push_swap_buttons/reverseRotate"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_eotj8")
+text = "rra"
+
+[node name="rrb" type="Button" parent="push_swap_buttons/reverseRotate"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_eotj8")
+text = "rrb"
+
+[node name="rrr" type="Button" parent="push_swap_buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_eotj8")
+text = "rrr"
+
+[node name="randomizeButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 834.0
+offset_top = 68.0
+offset_right = 1063.0
+offset_bottom = 129.0
+size_flags_horizontal = 3
+theme = ExtResource("1_eotj8")
+text = "randomize
+"
+icon = ExtResource("3_7hvub")
+expand_icon = true
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1720.0
+offset_top = 40.0
+offset_right = 1848.0
+offset_bottom = 101.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_eotj8")
+text = "Exit"
+icon = ExtResource("4_ye1jr")
+icon_alignment = 2
+expand_icon = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 569.0
+offset_top = 67.0
+offset_right = 817.0
+offset_bottom = 127.0
+color = Color(0.396078, 0.262745, 0.901961, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 25
+text = "Stacksize"
+
+[node name="TextEdit" type="TextEdit" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "0"
+
+[connection signal="pressed" from="do_buttons/undo" to="." method="_on_undo_pressed"]
+[connection signal="pressed" from="do_buttons/redo" to="." method="_on_redo_pressed"]
+[connection signal="pressed" from="push_swap_buttons/push/pa" to="." method="_on_pa_pressed"]
+[connection signal="pressed" from="push_swap_buttons/push/pb" to="." method="_on_pb_pressed"]
+[connection signal="pressed" from="push_swap_buttons/rotate/ra" to="." method="_on_ra_pressed"]
+[connection signal="pressed" from="push_swap_buttons/rotate/rb" to="." method="_on_rb_pressed"]
+[connection signal="pressed" from="push_swap_buttons/rr" to="." method="_on_rr_pressed"]
+[connection signal="pressed" from="push_swap_buttons/swap/sa" to="." method="_on_sa_pressed"]
+[connection signal="pressed" from="push_swap_buttons/swap/sb" to="." method="_on_sb_pressed"]
+[connection signal="pressed" from="push_swap_buttons/ss" to="." method="_on_ss_pressed"]
+[connection signal="pressed" from="push_swap_buttons/reverseRotate/rra" to="." method="_on_rra_pressed"]
+[connection signal="pressed" from="push_swap_buttons/reverseRotate/rrb" to="." method="_on_rrb_pressed"]
+[connection signal="pressed" from="push_swap_buttons/rrr" to="." method="_on_rrr_pressed"]
+[connection signal="pressed" from="randomizeButton" to="." method="_on_randomize_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
