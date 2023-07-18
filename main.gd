@@ -1,6 +1,6 @@
 extends Control
 
-var stack_size := 100
+var stack_size := 10
 
 var stack_a: Array[int]
 var stack_b: Array[int]
@@ -85,9 +85,11 @@ func _push(src: Array[int],  dst: Array[int]) -> void:
 
 func _pa() -> void:
 	_push(stack_a, stack_b)
+	_add_undo("pa")
 
 func _pb() -> void:
 	_push(stack_b, stack_a)
+	_add_undo("pb")
 
 func _rotate(stack: Array[int]) -> void:
 	stack.append(stack.pop_front())
@@ -95,13 +97,16 @@ func _rotate(stack: Array[int]) -> void:
 
 func _ra() -> void:
 	_rotate(stack_a)
+	_add_undo("ra")
 
 func _rb() -> void:
 	_rotate(stack_b)
+	_add_undo("rb")
 
 func _rr() -> void:
 	_rotate(stack_a)
 	_rotate(stack_b)
+	_add_undo("rr")
 
 func _swap(stack: Array[int]) -> void:
 	var temp := 0
@@ -113,13 +118,16 @@ func _swap(stack: Array[int]) -> void:
 
 func _sa() -> void:
 	_swap(stack_a)
+	_add_undo("sa")
 
 func _sb() -> void:
 	_swap(stack_b)
+	_add_undo("sb")
 
 func _ss():
 	_swap(stack_a)
 	_swap(stack_b)
+	_add_undo("ss")
 
 func _reverse_rotate(stack: Array[int]) -> void:
 	stack.insert(0, stack.pop_back())
@@ -127,13 +135,16 @@ func _reverse_rotate(stack: Array[int]) -> void:
 
 func _rra() -> void:
 	_reverse_rotate(stack_a)
+	_add_undo("rra")
 
 func _rrb() -> void:
 	_reverse_rotate(stack_b)
+	_add_undo("rrb")
 
 func _rrr() -> void:
 	_reverse_rotate(stack_a)
 	_reverse_rotate(stack_b)
+	_add_undo("rrr")
 
 # Button functions
 
@@ -143,13 +154,60 @@ func _on_exit_button_pressed() -> void:
 	get_tree().quit()
 
 func _on_undo_pressed() -> void:
-	pass
+	if not undo_stack.is_empty():
+		match undo_stack[-1]:
+			"pa":
+				_add_redo("pa")
+				_pb()
+				undo_stack.pop_back()
+			"pb":
+				_add_redo("pb")
+				_pa()
+				undo_stack.pop_back()
+			"ra":
+				_add_redo("ra")
+				_rra()
+				undo_stack.pop_back()
+			"rb":
+				_add_redo("rb")
+				_rrb()
+				undo_stack.pop_back()
+			"rr":
+				_add_redo("rr")
+				_rrr()
+				undo_stack.pop_back()
+			"rra":
+				_add_redo("rra")
+				_ra()
+				undo_stack.pop_back()
+			"rrb":
+				_add_redo("rrb")
+				_rb()
+				undo_stack.pop_back()
+			"rrr":
+				_add_redo("rrr")
+				_rr()
+				undo_stack.pop_back()
+			"sa":
+				_add_redo("sa")
+				_sb()
+				undo_stack.pop_back()
+			"sb":
+				_add_redo("sb")
+				_sb()
+				undo_stack.pop_back()
+			"ss":
+				_add_redo("ss")
+				_ss()
+				undo_stack.pop_back()
 
 func _on_redo_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_randomize_button_pressed() -> void:
 	_randomize_stack()
+	_clear_undo_stack()
+	_clear_redo_stack()
 
 # Push swap buttons
 func _on_pa_pressed() -> void:
@@ -194,6 +252,3 @@ func _on_rrb_pressed() -> void:
 
 func _on_rrr_pressed() -> void:
 	_rrr()
-
-
-
