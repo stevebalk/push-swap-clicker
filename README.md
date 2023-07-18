@@ -16,3 +16,5 @@ https://github.com/godotengine/godot/releases/download/4.1.1-stable/Godot_v4.1.1
 Just download Godot, clone push-swap-clicker somewhere, import the project into Godot and run it.
 
 I hope this will help you a little bit. :)
+
+![Screenshot from 2023-07-18 17-35-10](https://github.com/stevebalk/push-swap-clicker/assets/118443457/141c8010-393d-4813-b8ee-6c208d523e7b)
