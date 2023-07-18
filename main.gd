@@ -1,9 +1,12 @@
 extends Control
 
-var stack_size := 5
+var stack_size := 100
 
 var stack_a: Array[int]
 var stack_b: Array[int]
+
+var undo_stack: Array[String]
+var redo_stack: Array[String]
 
 @onready var backgroundA := $backgroundA
 @onready var backgroundB := $backgroundB
@@ -24,6 +27,13 @@ func _draw() -> void:
 	_draw_stack(stack_b, backgroundB_rect, linesize)
 
 
+
+
+
+
+
+
+
 func _draw_stack(stack: Array[int], rect: Rect2, size: Vector2):
 	rect.size.y = size.y
 	for value in stack:
@@ -39,6 +49,33 @@ func _randomize_stack() -> void:
 	stack_a.assign(range(1, stack_size + 1))
 	stack_a.shuffle()
 	queue_redraw()
+
+func _add_undo(function_name: String) -> void:
+	undo_stack.append(function_name)
+
+func _remove_undo() -> void:
+	undo_stack.pop_back()
+
+func _clear_undo_stack() -> void:
+	undo_stack.clear()
+
+func _add_redo(function_name: String) -> void:
+	redo_stack.append(function_name)
+
+func _clear_redo_stack() -> void:
+	redo_stack.clear()
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Push swap functions
 

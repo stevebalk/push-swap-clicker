@@ -1,10 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://sdhtll6hq8ux"]
+[gd_scene load_steps=15 format=3 uid="uid://sdhtll6hq8ux"]
 
 [ext_resource type="Theme" uid="uid://cp0f13d5wijip" path="res://buttons.tres" id="1_eotj8"]
 [ext_resource type="Script" path="res://main.gd" id="1_q51xe"]
-[ext_resource type="Texture2D" uid="uid://7mgh7v7s57ke" path="res://icons/undo.png" id="3_7hvub"]
-[ext_resource type="Texture2D" uid="uid://bgoc1112u3qw6" path="res://icons/redo.png" id="4_h4c64"]
+[ext_resource type="Texture2D" uid="uid://c24vcl2awinp8" path="res://icons/rewind.png" id="3_m5jnj"]
+[ext_resource type="Texture2D" uid="uid://c0nm87mrbrjot" path="res://icons/fastForward.png" id="4_vjb77"]
 [ext_resource type="Texture2D" uid="uid://3uxux8b3exnv" path="res://icons/exit.png" id="4_ye1jr"]
+[ext_resource type="Texture2D" uid="uid://b52ivijfkkody" path="res://icons/arrowLeft.png" id="5_3stwe"]
+[ext_resource type="Texture2D" uid="uid://crpsdxvjrw8f4" path="res://icons/arrowRight.png" id="6_psgeo"]
+[ext_resource type="Texture2D" uid="uid://dmopoflihv4uc" path="res://icons/ra.png" id="7_wiulb"]
+[ext_resource type="Texture2D" uid="uid://bfxi4blwmrn8r" path="res://icons/rb.png" id="8_df6l0"]
+[ext_resource type="Texture2D" uid="uid://blv5xnnt1fsqh" path="res://icons/rra.png" id="9_rb8tx"]
+[ext_resource type="Texture2D" uid="uid://we75eg5vlct8" path="res://icons/rrb.png" id="10_7gjvf"]
+[ext_resource type="Texture2D" uid="uid://bf4163n212dqr" path="res://icons/swap_a.png" id="11_w8u1u"]
+[ext_resource type="Texture2D" uid="uid://b6e8cxm0ipco8" path="res://icons/swap_b.png" id="12_3c76m"]
+[ext_resource type="Texture2D" uid="uid://2c68n6iqdobq" path="res://icons/dice.png" id="13_kjks4"]
 
 [node name="main" type="Control"]
 custom_minimum_size = Vector2(1920, 1080)
@@ -64,7 +73,7 @@ size_flags_horizontal = 3
 theme = ExtResource("1_eotj8")
 text = "undo
 "
-icon = ExtResource("3_7hvub")
+icon = ExtResource("3_m5jnj")
 expand_icon = true
 
 [node name="redo" type="Button" parent="do_buttons"]
@@ -73,7 +82,7 @@ size_flags_horizontal = 3
 theme = ExtResource("1_eotj8")
 text = "redo
 "
-icon = ExtResource("4_h4c64")
+icon = ExtResource("4_vjb77")
 icon_alignment = 2
 expand_icon = true
 
@@ -93,17 +102,25 @@ theme_override_constants/separation = 30
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="pa" type="Button" parent="push_swap_buttons/push"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("1_eotj8")
-text = "pa"
-
 [node name="pb" type="Button" parent="push_swap_buttons/push"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_eotj8")
 text = "pb"
+icon = ExtResource("5_3stwe")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="pa" type="Button" parent="push_swap_buttons/push"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_eotj8")
+text = "pa"
+icon = ExtResource("6_psgeo")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
 
 [node name="HSeparator" type="HSeparator" parent="push_swap_buttons"]
 layout_mode = 2
@@ -118,6 +135,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_eotj8")
 text = "ra"
+icon = ExtResource("7_wiulb")
+expand_icon = true
 
 [node name="rb" type="Button" parent="push_swap_buttons/rotate"]
 layout_mode = 2
@@ -125,6 +144,9 @@ size_flags_horizontal = 3
 theme = ExtResource("1_eotj8")
 text = "rb
 "
+icon = ExtResource("8_df6l0")
+icon_alignment = 2
+expand_icon = true
 
 [node name="rr" type="Button" parent="push_swap_buttons"]
 layout_mode = 2
@@ -137,33 +159,6 @@ text = "rr
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="swap" type="HBoxContainer" parent="push_swap_buttons"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="sa" type="Button" parent="push_swap_buttons/swap"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("1_eotj8")
-text = "sa"
-
-[node name="sb" type="Button" parent="push_swap_buttons/swap"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("1_eotj8")
-text = "sb"
-
-[node name="ss" type="Button" parent="push_swap_buttons"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("1_eotj8")
-text = "ss
-"
-
-[node name="HSeparator3" type="HSeparator" parent="push_swap_buttons"]
-layout_mode = 2
-theme_override_constants/separation = 30
-
 [node name="reverseRotate" type="HBoxContainer" parent="push_swap_buttons"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -173,18 +168,55 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_eotj8")
 text = "rra"
+icon = ExtResource("9_rb8tx")
+expand_icon = true
 
 [node name="rrb" type="Button" parent="push_swap_buttons/reverseRotate"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_eotj8")
 text = "rrb"
+icon = ExtResource("10_7gjvf")
+icon_alignment = 2
+expand_icon = true
 
 [node name="rrr" type="Button" parent="push_swap_buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_eotj8")
 text = "rrr"
+
+[node name="HSeparator3" type="HSeparator" parent="push_swap_buttons"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="swap" type="HBoxContainer" parent="push_swap_buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="sa" type="Button" parent="push_swap_buttons/swap"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_eotj8")
+text = "sa"
+icon = ExtResource("11_w8u1u")
+expand_icon = true
+
+[node name="sb" type="Button" parent="push_swap_buttons/swap"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_eotj8")
+text = "sb"
+icon = ExtResource("12_3c76m")
+icon_alignment = 2
+expand_icon = true
+
+[node name="ss" type="Button" parent="push_swap_buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_eotj8")
+text = "ss
+"
 
 [node name="randomizeButton" type="Button" parent="."]
 layout_mode = 0
@@ -196,7 +228,7 @@ size_flags_horizontal = 3
 theme = ExtResource("1_eotj8")
 text = "randomize
 "
-icon = ExtResource("3_7hvub")
+icon = ExtResource("13_kjks4")
 expand_icon = true
 
 [node name="ExitButton" type="Button" parent="."]
@@ -206,10 +238,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 1720.0
-offset_top = 40.0
-offset_right = 1848.0
-offset_bottom = 101.0
+offset_left = -177.0
+offset_top = -498.0
+offset_right = -49.0
+offset_bottom = -437.0
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 0
@@ -256,16 +288,16 @@ placeholder_text = "0"
 
 [connection signal="pressed" from="do_buttons/undo" to="." method="_on_undo_pressed"]
 [connection signal="pressed" from="do_buttons/redo" to="." method="_on_redo_pressed"]
-[connection signal="pressed" from="push_swap_buttons/push/pa" to="." method="_on_pa_pressed"]
 [connection signal="pressed" from="push_swap_buttons/push/pb" to="." method="_on_pb_pressed"]
+[connection signal="pressed" from="push_swap_buttons/push/pa" to="." method="_on_pa_pressed"]
 [connection signal="pressed" from="push_swap_buttons/rotate/ra" to="." method="_on_ra_pressed"]
 [connection signal="pressed" from="push_swap_buttons/rotate/rb" to="." method="_on_rb_pressed"]
 [connection signal="pressed" from="push_swap_buttons/rr" to="." method="_on_rr_pressed"]
-[connection signal="pressed" from="push_swap_buttons/swap/sa" to="." method="_on_sa_pressed"]
-[connection signal="pressed" from="push_swap_buttons/swap/sb" to="." method="_on_sb_pressed"]
-[connection signal="pressed" from="push_swap_buttons/ss" to="." method="_on_ss_pressed"]
 [connection signal="pressed" from="push_swap_buttons/reverseRotate/rra" to="." method="_on_rra_pressed"]
 [connection signal="pressed" from="push_swap_buttons/reverseRotate/rrb" to="." method="_on_rrb_pressed"]
 [connection signal="pressed" from="push_swap_buttons/rrr" to="." method="_on_rrr_pressed"]
+[connection signal="pressed" from="push_swap_buttons/swap/sa" to="." method="_on_sa_pressed"]
+[connection signal="pressed" from="push_swap_buttons/swap/sb" to="." method="_on_sb_pressed"]
+[connection signal="pressed" from="push_swap_buttons/ss" to="." method="_on_ss_pressed"]
 [connection signal="pressed" from="randomizeButton" to="." method="_on_randomize_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

@@ -14,4 +14,5 @@ corner_radius_bottom_left = 4
 
 [resource]
 default_font_size = 30
+Button/font_sizes/font_size = 25
 Button/styles/normal = SubResource("StyleBoxFlat_wfynt")
