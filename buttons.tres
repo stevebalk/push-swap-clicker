@@ -1,7 +1,21 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cp0f13d5wijip"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cp0f13d5wijip"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wfynt"]
-bg_color = Color(0.196078, 0.278431, 0.619608, 1)
+[ext_resource type="StyleBox" uid="uid://b7hcqqe58jdx2" path="res://new_style_box_flat.tres" id="1_f21mh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ebolp"]
+bg_color = Color(0.313726, 0.419608, 0.815686, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ev4h3"]
+bg_color = Color(0.141176, 0.203922, 0.47451, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -15,4 +29,6 @@ corner_radius_bottom_left = 4
 [resource]
 default_font_size = 30
 Button/font_sizes/font_size = 25
-Button/styles/normal = SubResource("StyleBoxFlat_wfynt")
+Button/styles/hover = SubResource("StyleBoxFlat_ebolp")
+Button/styles/normal = ExtResource("1_f21mh")
+Button/styles/pressed = SubResource("StyleBoxFlat_ev4h3")

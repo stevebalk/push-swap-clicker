@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://sdhtll6hq8ux"]
+[gd_scene load_steps=17 format=3 uid="uid://sdhtll6hq8ux"]
 
 [ext_resource type="Theme" uid="uid://cp0f13d5wijip" path="res://buttons.tres" id="1_eotj8"]
 [ext_resource type="Script" path="res://main.gd" id="1_q51xe"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://bf4163n212dqr" path="res://icons/swap_a.png" id="11_w8u1u"]
 [ext_resource type="Texture2D" uid="uid://b6e8cxm0ipco8" path="res://icons/swap_b.png" id="12_3c76m"]
 [ext_resource type="Texture2D" uid="uid://2c68n6iqdobq" path="res://icons/dice.png" id="13_kjks4"]
+[ext_resource type="Script" path="res://StacksizeLineEdit.gd" id="15_h38kg"]
+[ext_resource type="Texture2D" uid="uid://bgoc1112u3qw6" path="res://icons/redo.png" id="16_118yq"]
 
 [node name="main" type="Control"]
 custom_minimum_size = Vector2(1920, 1080)
@@ -21,7 +23,7 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_q51xe")
 
-[node name="backgroundA" type="ColorRect" parent="."]
+[node name="BackgroundA" type="ColorRect" parent="."]
 show_behind_parent = true
 custom_minimum_size = Vector2(818, 830)
 layout_mode = 2
@@ -31,16 +33,16 @@ offset_right = 870.0
 offset_bottom = 1030.0
 color = Color(0, 0, 0, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="backgroundA"]
+[node name="RichTextLabel" type="RichTextLabel" parent="BackgroundA"]
 layout_mode = 2
 offset_left = 249.0
-offset_top = -92.0
+offset_top = -75.0
 offset_right = 499.0
-offset_bottom = -7.0
+offset_bottom = 10.0
 theme_override_font_sizes/normal_font_size = 60
 text = "Stack A"
 
-[node name="backgroundB" type="ColorRect" parent="."]
+[node name="BackgroundB" type="ColorRect" parent="."]
 show_behind_parent = true
 layout_mode = 2
 offset_left = 1050.0
@@ -49,16 +51,16 @@ offset_right = 1870.0
 offset_bottom = 1030.0
 color = Color(0, 0, 0, 1)
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="backgroundB"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="BackgroundB"]
 layout_mode = 2
 offset_left = 258.0
-offset_top = -91.0
+offset_top = -74.0
 offset_right = 490.0
-offset_bottom = -8.0
+offset_bottom = 9.0
 theme_override_font_sizes/normal_font_size = 60
 text = "Stack B"
 
-[node name="do_buttons" type="HBoxContainer" parent="."]
+[node name="DoButtons" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 753.0
 offset_top = 146.0
@@ -67,26 +69,28 @@ offset_bottom = 190.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="undo" type="Button" parent="do_buttons"]
+[node name="Undo" type="Button" parent="DoButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_eotj8")
+disabled = true
 text = "undo
 "
 icon = ExtResource("3_m5jnj")
 expand_icon = true
 
-[node name="redo" type="Button" parent="do_buttons"]
+[node name="Redo" type="Button" parent="DoButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_eotj8")
+disabled = true
 text = "redo
 "
 icon = ExtResource("4_vjb77")
 icon_alignment = 2
 expand_icon = true
 
-[node name="push_swap_buttons" type="VBoxContainer" parent="."]
+[node name="PushSwapButtons" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(150, 250)
 layout_mode = 0
 offset_left = 886.0
@@ -94,15 +98,15 @@ offset_top = 195.0
 offset_right = 1036.0
 offset_bottom = 663.0
 
-[node name="HSeparator4" type="HSeparator" parent="push_swap_buttons"]
+[node name="HSeparator4" type="HSeparator" parent="PushSwapButtons"]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="push" type="HBoxContainer" parent="push_swap_buttons"]
+[node name="push" type="HBoxContainer" parent="PushSwapButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="pb" type="Button" parent="push_swap_buttons/push"]
+[node name="pb" type="Button" parent="PushSwapButtons/push"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_eotj8")
@@ -112,7 +116,7 @@ icon_alignment = 1
 vertical_icon_alignment = 2
 expand_icon = true
 
-[node name="pa" type="Button" parent="push_swap_buttons/push"]
+[node name="pa" type="Button" parent="PushSwapButtons/push"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_eotj8")
@@ -122,15 +126,15 @@ icon_alignment = 1
 vertical_icon_alignment = 2
 expand_icon = true
 
-[node name="HSeparator" type="HSeparator" parent="push_swap_buttons"]
+[node name="HSeparator" type="HSeparator" parent="PushSwapButtons"]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="rotate" type="HBoxContainer" parent="push_swap_buttons"]
+[node name="rotate" type="HBoxContainer" parent="PushSwapButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ra" type="Button" parent="push_swap_buttons/rotate"]
+[node name="ra" type="Button" parent="PushSwapButtons/rotate"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_eotj8")
@@ -138,7 +142,7 @@ text = "ra"
 icon = ExtResource("7_wiulb")
 expand_icon = true
 
-[node name="rb" type="Button" parent="push_swap_buttons/rotate"]
+[node name="rb" type="Button" parent="PushSwapButtons/rotate"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_eotj8")
@@ -148,22 +152,22 @@ icon = ExtResource("8_df6l0")
 icon_alignment = 2
 expand_icon = true
 
-[node name="rr" type="Button" parent="push_swap_buttons"]
+[node name="rr" type="Button" parent="PushSwapButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("1_eotj8")
 text = "rr
 "
 
-[node name="HSeparator2" type="HSeparator" parent="push_swap_buttons"]
+[node name="HSeparator2" type="HSeparator" parent="PushSwapButtons"]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="reverseRotate" type="HBoxContainer" parent="push_swap_buttons"]
+[node name="reverseRotate" type="HBoxContainer" parent="PushSwapButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="rra" type="Button" parent="push_swap_buttons/reverseRotate"]
+[node name="rra" type="Button" parent="PushSwapButtons/reverseRotate"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_eotj8")
@@ -171,7 +175,7 @@ text = "rra"
 icon = ExtResource("9_rb8tx")
 expand_icon = true
 
-[node name="rrb" type="Button" parent="push_swap_buttons/reverseRotate"]
+[node name="rrb" type="Button" parent="PushSwapButtons/reverseRotate"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_eotj8")
@@ -180,21 +184,21 @@ icon = ExtResource("10_7gjvf")
 icon_alignment = 2
 expand_icon = true
 
-[node name="rrr" type="Button" parent="push_swap_buttons"]
+[node name="rrr" type="Button" parent="PushSwapButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_eotj8")
 text = "rrr"
 
-[node name="HSeparator3" type="HSeparator" parent="push_swap_buttons"]
+[node name="HSeparator3" type="HSeparator" parent="PushSwapButtons"]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="swap" type="HBoxContainer" parent="push_swap_buttons"]
+[node name="swap" type="HBoxContainer" parent="PushSwapButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="sa" type="Button" parent="push_swap_buttons/swap"]
+[node name="sa" type="Button" parent="PushSwapButtons/swap"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_eotj8")
@@ -202,7 +206,7 @@ text = "sa"
 icon = ExtResource("11_w8u1u")
 expand_icon = true
 
-[node name="sb" type="Button" parent="push_swap_buttons/swap"]
+[node name="sb" type="Button" parent="PushSwapButtons/swap"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_eotj8")
@@ -211,14 +215,14 @@ icon = ExtResource("12_3c76m")
 icon_alignment = 2
 expand_icon = true
 
-[node name="ss" type="Button" parent="push_swap_buttons"]
+[node name="ss" type="Button" parent="PushSwapButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_eotj8")
 text = "ss
 "
 
-[node name="randomizeButton" type="Button" parent="."]
+[node name="RandomizeButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 834.0
 offset_top = 68.0
@@ -251,15 +255,15 @@ icon = ExtResource("4_ye1jr")
 icon_alignment = 2
 expand_icon = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Stacksize" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 569.0
-offset_top = 67.0
-offset_right = 817.0
-offset_bottom = 127.0
+offset_left = 1074.0
+offset_top = 69.0
+offset_right = 1322.0
+offset_bottom = 129.0
 color = Color(0.396078, 0.262745, 0.901961, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Stacksize"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -267,7 +271,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="ColorRect/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Stacksize/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 5
@@ -275,29 +279,59 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/HBoxContainer/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Stacksize/HBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/normal_font_size = 25
 text = "Stacksize"
 
-[node name="TextEdit" type="TextEdit" parent="ColorRect/HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="Stacksize/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "0"
+clear_button_enabled = true
+caret_blink = true
+script = ExtResource("15_h38kg")
 
-[connection signal="pressed" from="do_buttons/undo" to="." method="_on_undo_pressed"]
-[connection signal="pressed" from="do_buttons/redo" to="." method="_on_redo_pressed"]
-[connection signal="pressed" from="push_swap_buttons/push/pb" to="." method="_on_pb_pressed"]
-[connection signal="pressed" from="push_swap_buttons/push/pa" to="." method="_on_pa_pressed"]
-[connection signal="pressed" from="push_swap_buttons/rotate/ra" to="." method="_on_ra_pressed"]
-[connection signal="pressed" from="push_swap_buttons/rotate/rb" to="." method="_on_rb_pressed"]
-[connection signal="pressed" from="push_swap_buttons/rr" to="." method="_on_rr_pressed"]
-[connection signal="pressed" from="push_swap_buttons/reverseRotate/rra" to="." method="_on_rra_pressed"]
-[connection signal="pressed" from="push_swap_buttons/reverseRotate/rrb" to="." method="_on_rrb_pressed"]
-[connection signal="pressed" from="push_swap_buttons/rrr" to="." method="_on_rrr_pressed"]
-[connection signal="pressed" from="push_swap_buttons/swap/sa" to="." method="_on_sa_pressed"]
-[connection signal="pressed" from="push_swap_buttons/swap/sb" to="." method="_on_sb_pressed"]
-[connection signal="pressed" from="push_swap_buttons/ss" to="." method="_on_ss_pressed"]
-[connection signal="pressed" from="randomizeButton" to="." method="_on_randomize_button_pressed"]
+[node name="RestartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 871.0
+offset_top = 15.0
+offset_right = 1043.0
+offset_bottom = 58.0
+theme = ExtResource("1_eotj8")
+text = "Restart"
+icon = ExtResource("16_118yq")
+expand_icon = true
+
+[node name="CommandScreen" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 887.0
+offset_top = 684.0
+offset_right = 1034.0
+offset_bottom = 1038.0
+theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+scroll_smooth = true
+caret_move_on_right_click = false
+
+[connection signal="pressed" from="DoButtons/Undo" to="." method="_on_undo_pressed"]
+[connection signal="pressed" from="DoButtons/Redo" to="." method="_on_redo_pressed"]
+[connection signal="pressed" from="PushSwapButtons/push/pb" to="." method="_on_pb_pressed"]
+[connection signal="pressed" from="PushSwapButtons/push/pa" to="." method="_on_pa_pressed"]
+[connection signal="pressed" from="PushSwapButtons/rotate/ra" to="." method="_on_ra_pressed"]
+[connection signal="pressed" from="PushSwapButtons/rotate/rb" to="." method="_on_rb_pressed"]
+[connection signal="pressed" from="PushSwapButtons/rr" to="." method="_on_rr_pressed"]
+[connection signal="pressed" from="PushSwapButtons/reverseRotate/rra" to="." method="_on_rra_pressed"]
+[connection signal="pressed" from="PushSwapButtons/reverseRotate/rrb" to="." method="_on_rrb_pressed"]
+[connection signal="pressed" from="PushSwapButtons/rrr" to="." method="_on_rrr_pressed"]
+[connection signal="pressed" from="PushSwapButtons/swap/sa" to="." method="_on_sa_pressed"]
+[connection signal="pressed" from="PushSwapButtons/swap/sb" to="." method="_on_sb_pressed"]
+[connection signal="pressed" from="PushSwapButtons/ss" to="." method="_on_ss_pressed"]
+[connection signal="pressed" from="RandomizeButton" to="." method="_on_randomize_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="text_changed" from="Stacksize/HBoxContainer/LineEdit" to="Stacksize/HBoxContainer/LineEdit" method="_on_text_changed"]
+[connection signal="text_submitted" from="Stacksize/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
