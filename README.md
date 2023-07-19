@@ -23,5 +23,5 @@ https://github.com/godotengine/godot/releases/download/4.1.1-stable/Godot_v4.1.1
 
 I hope this will help you a little bit. :)
 
-![Screenshot from 2023-07-19 17-26-41](https://github.com/stevebalk/push-swap-clicker/assets/118443457/db97cef4-5980-49f0-b59e-86e34b5e4a29)
-![Screenshot from 2023-07-19 17-27-11](https://github.com/stevebalk/push-swap-clicker/assets/118443457/b7526ddc-b8e0-4432-8a90-e78e8b09358e)
+![Screenshot from 2023-07-19 17-26-41](https://github.com/stevebalk/push-swap-clicker/assets/118443457/c7fa0cbb-18c6-49f9-8ac8-0910ba92c27a)
+![Screenshot from 2023-07-19 17-27-11](https://github.com/stevebalk/push-swap-clicker/assets/118443457/c45f8a48-34e0-4631-8654-0c6ed7e21f0b)
