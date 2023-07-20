@@ -116,10 +116,10 @@ func _push(src: Array[int],  dst: Array[int]) -> void:
 	queue_redraw()
 
 func _pa() -> void:
-	_push(stack_a, stack_b)
+	_push(stack_b, stack_a)
 
 func _pb() -> void:
-	_push(stack_b, stack_a)
+	_push(stack_a, stack_b)
 
 func _rotate(stack: Array[int]) -> void:
 	stack.append(stack.pop_front())
@@ -200,14 +200,14 @@ func _on_randomize_button_pressed() -> void:
 
 # Push swap buttons
 func _on_pa_pressed() -> void:
-	if not stack_a.is_empty():
+	if not stack_b.is_empty():
 		_pa()
 		_add("pa")
 		stack_changed.emit()
 
 
 func _on_pb_pressed() -> void:
-	if not stack_b.is_empty():
+	if not stack_a.is_empty():
 		_pb()
 		_add("pb")
 		stack_changed.emit()

@@ -106,21 +106,21 @@ theme_override_constants/separation = 30
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="pb" type="Button" parent="PushSwapButtons/push"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("1_eotj8")
-text = "pb"
-icon = ExtResource("5_3stwe")
-icon_alignment = 1
-vertical_icon_alignment = 2
-expand_icon = true
-
 [node name="pa" type="Button" parent="PushSwapButtons/push"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_eotj8")
 text = "pa"
+icon = ExtResource("5_3stwe")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="pb" type="Button" parent="PushSwapButtons/push"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_eotj8")
+text = "pb"
 icon = ExtResource("6_psgeo")
 icon_alignment = 1
 vertical_icon_alignment = 2
@@ -319,8 +319,8 @@ caret_move_on_right_click = false
 
 [connection signal="pressed" from="DoButtons/Undo" to="." method="_on_undo_pressed"]
 [connection signal="pressed" from="DoButtons/Redo" to="." method="_on_redo_pressed"]
-[connection signal="pressed" from="PushSwapButtons/push/pb" to="." method="_on_pb_pressed"]
 [connection signal="pressed" from="PushSwapButtons/push/pa" to="." method="_on_pa_pressed"]
+[connection signal="pressed" from="PushSwapButtons/push/pb" to="." method="_on_pb_pressed"]
 [connection signal="pressed" from="PushSwapButtons/rotate/ra" to="." method="_on_ra_pressed"]
 [connection signal="pressed" from="PushSwapButtons/rotate/rb" to="." method="_on_rb_pressed"]
 [connection signal="pressed" from="PushSwapButtons/rr" to="." method="_on_rr_pressed"]
