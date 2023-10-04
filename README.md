@@ -17,4 +17,6 @@ Just download Godot, clone push-swap-clicker somewhere, import the project into 
 
 I hope this will help you a little bit. :)
 
-![Screenshot from 2023-07-18 17-35-10](https://github.com/stevebalk/push-swap-clicker/assets/118443457/141c8010-393d-4813-b8ee-6c208d523e7b)
+![Screenshot from 2023-10-04 13-18-27](https://github.com/stevebalk/push-swap-clicker/assets/118443457/7eb3b0f1-1a60-40d9-9b9c-a41f8e23349d)
+
+![Screenshot from 2023-10-04 13-18-46](https://github.com/stevebalk/push-swap-clicker/assets/118443457/56b90c49-cc59-4539-841c-698919cca071)
