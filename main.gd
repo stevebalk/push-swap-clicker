@@ -1,6 +1,6 @@
 extends Control
 
-var stack_size := 10
+var stack_size := 5
 
 var start_stack: Array[int]
 
@@ -16,10 +16,14 @@ var redo_stack: Array[String]
 @onready var undo_button :=			$DoButtons/Undo
 @onready var stacksize_text_edit :=	$Stacksize/HBoxContainer/LineEdit
 @onready var command_screen :=		$CommandScreen
+@onready var moves_text :=			$MovesText
+@onready var text_a :=				$A
+@onready var text_b :=				$B
 
 var backgroundA_rect : Rect2
 var backgroundB_rect : Rect2
 var linesize: Vector2
+var moves := 0
 
 signal stack_changed
 
@@ -45,8 +49,21 @@ func _ready() -> void:
 	_initialize_stack()
 	self.stack_changed.connect(_clear_redo_stack)
 	stacksize_text_edit.text = str(stack_size)
+	text_a.clear()
+	text_b.clear()
+	for i in range(stack_a.size()):
+		text_a.append_text(str(stack_a[i]) + "\n")
+	for i in range(stack_b.size()):
+		text_a.append_text(str(stack_b[i]) + "\n")
+	print(backgroundA.get_rect().size.y / stack_size)
 
 func _draw() -> void:
+	text_a.clear()
+	text_b.clear()
+	for i in range(stack_a.size()):
+		text_a.append_text(str(stack_a[i]) + "\n")
+	for i in range(stack_b.size()):
+		text_b.append_text(str(stack_b[i]) + "\n")
 	_draw_stack(stack_a, backgroundA_rect, linesize)
 	_draw_stack(stack_b, backgroundB_rect, linesize)
 
@@ -67,6 +84,8 @@ func _clear_stacks() -> void:
 	_clear_redo_stack()
 
 func _randomize_stack() -> void:
+	moves = 0
+	moves_text.text = str(moves)
 	_clear_stacks()
 	_initialize_stack()
 	stack_a.shuffle()
@@ -79,6 +98,8 @@ func _add(command: String) -> void:
 
 func _add_undo(command: String) -> void:
 	undo_stack.append(command)
+	moves += 1
+	moves_text.text = str(moves)
 	undo_button.disabled = false
 
 func _clear_undo_stack() -> void:
@@ -87,6 +108,8 @@ func _clear_undo_stack() -> void:
 
 func _add_redo(command: String) -> void:
 	redo_stack.append(command)
+	moves -= 1
+	moves_text.text = str(moves)
 	redo_button.disabled = false
 
 func _clear_redo_stack() -> void:
@@ -96,14 +119,29 @@ func _clear_redo_stack() -> void:
 func _initialize_stack() -> void:
 	stack_a.assign(range(1, stack_size + 1))
 	linesize.y = backgroundA.get_rect().size.y / stack_size
+	moves = 0
+	moves_text.text = str(moves)
 	command_screen.clear()
 	start_stack = stack_a.duplicate()
+	_set_stack_text_size()
 
 func _restart() -> void:
+	moves = 0
+	moves_text.text = str(moves)
 	_clear_stacks()
 	stack_a = start_stack.duplicate()
 	command_screen.clear()
 	queue_redraw()
+
+func _set_stack_text_size() -> void:
+	if stack_size <= 50:
+		text_a.show()
+		text_b.show()
+		text_a.add_theme_font_size_override("normal_font_size", int(backgroundA.get_rect().size.y / stack_size / 1.375))
+		text_b.add_theme_font_size_override("normal_font_size", int(backgroundA.get_rect().size.y / stack_size / 1.375))
+	else:
+		text_a.hide()
+		text_b.hide()
 
 func _pop_last_text(string_size: int) -> void:
 	command_screen.text = command_screen.text.left(command_screen.text.length() - string_size)
